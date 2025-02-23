@@ -1,7 +1,7 @@
 
 import { useCurrentFrame, interpolate } from "remotion";
-import { Prism as SyntaxHighlighter } from "prism-react-renderer";
-import { themes } from "prism-react-renderer";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const codeSnippet = `function createInnovation() {
   const future = await design.build({
@@ -29,13 +29,19 @@ export const CodeSnippet: React.FC = () => {
           transform: `scale(${interpolate(progress, [0, 1], [0.9, 1])})`,
         }}
       >
-        <SyntaxHighlighter
-          language="javascript"
-          style={themes.nightOwl}
-          className="text-lg"
-        >
-          {codeSnippet}
-        </SyntaxHighlighter>
+        <div className="text-lg">
+          <SyntaxHighlighter
+            language="javascript"
+            style={nightOwl}
+            customStyle={{
+              background: "transparent",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {codeSnippet}
+          </SyntaxHighlighter>
+        </div>
       </div>
     </div>
   );
